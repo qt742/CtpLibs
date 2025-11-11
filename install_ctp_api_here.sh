@@ -31,8 +31,8 @@ function macos_install() {
 		echo ""
 		test -d "$to" && rm -fr "$to"
 		mkdir $to
-		cp $from/thosttraderapi_se.framework/Versions/A/thosttraderapi_se $to/libthosttraderapi_se.dylib
-		cp $from/thostmduserapi_se.framework/Versions/A/thostmduserapi_se $to/libthostmduserapi_se.dylib
+		cp -fr $from/thosttraderapi_se.framework $to/
+		cp -fr $from/thostmduserapi_se.framework $to/
 
 		gbk_to_utf8 $from/thosttraderapi_se.framework/Versions/A/Headers/ThostFtdcTraderApi.h $to/ThostFtdcTraderApi.h
 		gbk_to_utf8 $from/thosttraderapi_se.framework/Versions/A/Headers/ThostFtdcUserApiDataType.h $to/ThostFtdcUserApiDataType.h
