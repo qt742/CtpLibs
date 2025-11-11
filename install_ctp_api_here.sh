@@ -88,8 +88,7 @@ echo "PLATFORM: $PLATFORM"
 echo "VERSION: $VERSION"
 
 
-SCRIPT_DIR=$(realpath $0)
-LIBS_DIR=$(dirname $SCRIPT_DIR)
+LIBS_DIR="$(cd "$(dirname $0)" && pwd)"
 echo "LIBS_DIR: $LIBS_DIR"
 HERE=`pwd`
 
