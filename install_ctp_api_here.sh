@@ -34,6 +34,9 @@ function macos_install() {
 		cp -fr $from/thosttraderapi_se.framework $to/
 		cp -fr $from/thostmduserapi_se.framework $to/
 
+		ln -s $to/thosttraderapi_se.framework/Versions/A/thosttraderapi_se $to/libthosttraderapi_se.dylib
+		ln -s $to/thostmduserapi_se.framework/Versions/A/thostmduserapi_se $to/libthostmduserapi_se.dylib		
+
 		gbk_to_utf8 $from/thosttraderapi_se.framework/Versions/A/Headers/ThostFtdcTraderApi.h $to/ThostFtdcTraderApi.h
 		gbk_to_utf8 $from/thosttraderapi_se.framework/Versions/A/Headers/ThostFtdcUserApiDataType.h $to/ThostFtdcUserApiDataType.h
 		gbk_to_utf8 $from/thosttraderapi_se.framework/Versions/A/Headers/ThostFtdcUserApiStruct.h $to/ThostFtdcUserApiStruct.h
