@@ -60,7 +60,7 @@ function linux_install() {
 		mkdir $to
 		cp -fr $from/*.h $to/
 		ln -s $from/thostmduserapi_se.so $to/libthostmduserapi_se.so
-		ln -s $from/thosttraderapi_se.so $to/libthostmduserapi_se.so
+		ln -s $from/thosttraderapi_se.so $to/libthosttraderapi_se.so
 	else
 		echo "Error: NOT FOUND linux-$ver"
 	fi 	
