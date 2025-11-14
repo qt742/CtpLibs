@@ -50,12 +50,20 @@ function macos_install() {
 
 
 function linux_install() {
-	libs=$1
 	ver=$2
-	to=$3
+	from="$1/$ver"
+	to="$3/api-linux"
 	echo "linux_install $libs $ver to $to"
-	test -d $libs/linux/$ver || echo "Error: NOT FOUND linux-$ver"; exit 2
-
+	if [ -d $from ]; then
+		echo ""
+		test -d "$to" && rm -fr "$to"
+		mkdir $to
+		cp -fr $from/*.h $to/
+		ln -s $from/thostmduserapi_se.so $to/libthostmduserapi_se.so
+		ln -s $from/thosttraderapi_se.so $to/libthostmduserapi_se.so
+	else
+		echo "Error: NOT FOUND linux-$ver"
+	fi 	
 
 
 }
