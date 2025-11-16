@@ -53,7 +53,7 @@ function linux_install() {
 	ver=$2
 	from="$1/$ver"
 	to="$3/api-linux"
-	echo "linux_install $libs $ver to $to"
+	echo "linux_install $from to $to"
 	if [ -d $from ]; then
 		echo ""
 		test -d "$to" && rm -fr "$to"
@@ -69,11 +69,19 @@ function linux_install() {
 }
 
 function windows_install() {
-	libs=$1
 	ver=$2
-	to=$3
-	echo "windows_install $libs $ver to $to"
-	test -d $libs/windows/$ver || echo "Error: NOT FOUND windows-$ver"; exit 2
+	from="$1/$ver"
+	to="$3/api-windows"
+	echo "windows_install $from to $to"
+	if [ -d $from ]; then
+		echo ""
+		test -d "$to" && rm -fr "$to"
+		mkdir $to
+		cp -fr $from/*.h $to/
+		cp -fr $from/thost* $to/
+	else
+		echo "Error: NOT FOUND windows-$ver"
+	fi 	
 
 
 }
@@ -121,7 +129,7 @@ case $PLATFORM in
 
 	windows)
 	  echo "calling... windows_install"
-	  windows_install $LIBS_DIR/windws $VERSION $HERE
+	  windows_install $LIBS_DIR/windows $VERSION $HERE
 	;;
 
 esac
